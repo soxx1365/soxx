@@ -280,6 +280,59 @@
 
   <div class="divider"></div>
 
+    <!-- SAVE CONTACT BUTTON -->
+  <div style="width:100%;margin-bottom:28px;opacity:0;animation:fadeUp 0.4s ease 0.48s forwards;">
+    <button onclick="downloadVCard()" style="
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:linear-gradient(135deg,rgba(176,120,80,0.15),rgba(176,120,80,0.08));
+      border:1px solid rgba(176,120,80,0.4);
+      border-radius:14px;
+      padding:16px 20px;
+      color:#f2ede6;
+      font-family:'DM Sans',sans-serif;
+      font-size:15px;
+      font-weight:500;
+      cursor:pointer;
+      transition:all 0.2s;
+      letter-spacing:0.5px;
+    "
+    onmouseover="this.style.background='linear-gradient(135deg,rgba(176,120,80,0.25),rgba(176,120,80,0.15))';this.style.borderColor='rgba(176,120,80,0.7)';this.style.transform='translateY(-2px)'"
+    onmouseout="this.style.background='linear-gradient(135deg,rgba(176,120,80,0.15),rgba(176,120,80,0.08))';this.style.borderColor='rgba(176,120,80,0.4)';this.style.transform='translateY(0)'">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(176,120,80,1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+        <line x1="12" y1="14" x2="12" y2="20"/>
+        <line x1="9" y1="17" x2="15" y2="17"/>
+      </svg>
+      Save Contact — Mellah Kilangit (soxx)
+    </button>
+    <div style="font-size:10px;color:#666;text-align:center;margin-top:8px;letter-spacing:1px;font-family:'DM Sans',sans-serif;">
+      Saves to your phone contacts automatically
+    </div>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="section-label" style="--delay:0.52s">🎬 Featured</div>
+  <div style="width:100%;margin-bottom:32px;opacity:0;animation:fadeUp 0.5s ease 0.54s forwards;">
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;border:1px solid rgba(176,120,80,0.2);box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+      <iframe
+        src="https://www.youtube.com/embed/M_u8zvhaWvo"
+        title="soxx — Mellah Kilangit · Digital Kanaka · PNG Creator"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:12px;">
+      </iframe>
+    </div>
+    <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#888;text-align:center;margin-top:10px;letter-spacing:1px;">
+      soxx · Mellah Kilangit · Port Moresby, Papua New Guinea
+    </div>
+  </div>
+
   <!-- VIDEO -->
   <div class="section-label" style="--delay:0.52s">🎬 Featured</div>
   <div style="width:100%;margin-bottom:32px;opacity:0;animation:fadeUp 0.5s ease 0.54s forwards;">
@@ -445,5 +498,44 @@
   </div>
 
 </div>
+  <script>
+function downloadVCard() {
+  const vcard = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'FN:Mellah Kilangit (soxx)',
+    'N:Kilangit;Mellah;;;',
+    'NICKNAME:soxx;soxx1365',
+    'ORG:Muitech Digital',
+    'TITLE:Director & Digital Trainer',
+    'TEL;TYPE=CELL:+675 7805 1975',
+    'EMAIL;TYPE=INTERNET,WORK;X-LABEL=ICT Solutions:mk@muitech.net',
+    'EMAIL;TYPE=INTERNET,WORK;X-LABEL=Media Production:mk@kreativesavages.com',
+    'URL;TYPE=WORK:https://www.muitech.net',
+    'URL;TYPE=HOME:https://soxx.muitech.net',
+    'URL;TYPE=SHOP:https://www.soxx.store',
+    'X-SOCIALPROFILE;TYPE=tiktok:https://www.tiktok.com/@soxx1365',
+    'X-SOCIALPROFILE;TYPE=youtube:https://www.youtube.com/@soxx1365',
+    'X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/soxx1365/',
+    'X-SOCIALPROFILE;TYPE=facebook:https://www.facebook.com/soxx1365',
+    'X-SOCIALPROFILE;TYPE=x:https://x.com/soxx',
+    'X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/mellahk',
+    'X-SOCIALPROFILE;TYPE=telegram:https://t.me/soxx1365',
+    'ADR;TYPE=WORK:;;Port Moresby;;NCD;;Papua New Guinea',
+    'NOTE:Digital Kanaka · PNG Creator · AI Media Specialist · Founder of Muitech Digital & Kreative Savages',
+    'END:VCARD'
+  ].join('\r\n');
+
+  const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'mellah-kilangit-soxx.vcf';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
 </body>
 </html>
